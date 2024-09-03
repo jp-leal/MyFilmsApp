@@ -11,14 +11,14 @@ import SwiftData
 @Model
 class Film{
     var title: String
-    var year: Int
+    var year: String
     var country: String
     var director: String
     var isRentedOut: Bool
     
     init(
         title: String,
-        year: Int,
+        year: String,
         country: String,
         director: String,
         isRentedOut: Bool = false
