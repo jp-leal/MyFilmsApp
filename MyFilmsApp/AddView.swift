@@ -28,26 +28,34 @@ struct AddView: View {
                 Section{
                     HStack{
                         Spacer()
-                Button("Save") {
-                    let newFilm = Film(title: title, year: year, country: country, director: director)
-                    context.insert(newFilm)
-                    dismiss()
+                        Button {
+                            let newFilm = Film(title: title, year: year, country: country, director: director)
+                            context.insert(newFilm)
+                            dismiss()
+                        }
+                        label: {
+                            HStack{
+                                Spacer()
+                                Text("Save")
+                                Spacer()
+                            }
+                        }
+                        .disabled(title.isEmpty || year.isEmpty || country.isEmpty || director.isEmpty)         .buttonStyle(.borderless)
+                        .listRowBackground(Color.secondary)
+                    }
                 }
-                .buttonStyle(.borderedProminent)
-                        Spacer()
-            }
-                }.listRowBackground(Image(systemName: "sun.max.fill"))
                
             }
             .navigationTitle("Add Film")
             .navigationBarTitleDisplayMode(.inline)
             .frame(maxWidth: 400)
-            .padding()
+            
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Cancel") {
                         dismiss()
                     }
+                        .controlSize(.small)
                 }
             }
         }
